@@ -1,13 +1,6 @@
-# Bs-kong
+# Kong
 
-Kong 云原生架构下的 API 网关，参考链接：
-
-> Docker 安装：https://docs.konghq.com/install/docker/
->
-> Docker-compose 安装部署：https://github.com/Kong/docker-kong/tree/master/compose
->
-> 云原生架构下的 API 网关实践 [一](https://juejin.im/post/5d348b36e51d45554877a6a0)、[二](https://juejin.im/post/5d63ca34e51d4561cc25f05f)、[三](https://juejin.im/post/5d6fce2d51882505730d2d01)
-
+Kong 云原生架构下的 API 网关
 
 
 ## 如何使用
@@ -36,7 +29,7 @@ create database konga owner konga;
 ### 克隆项目
 
 ```
-git clone -b 2.0 gitlab@git.socmap.org:soc/smis/bs-kong.git
+git clone https://github.com/my6889/kong-api.git
 ```
 
 ### 启动项目
