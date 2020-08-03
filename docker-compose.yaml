@@ -1,9 +1,9 @@
 version: "3.7"
 
 services:
-  # Kong: The API Gateway
+# Kong: The API Gateway
   kong:
-    image: kong:2.0.1
+    image: kong:2.1.0-ubuntu 
     restart: always
     env_file:
       - kong.env
@@ -17,13 +17,29 @@ services:
       interval: 5s
       timeout: 2s
       retries: 15
+    depends_on:
+      - postgresql
 
 # Konga: Kong GUI
   konga:
-    image: pantsel/konga:0.14.7
+    image: pantsel/konga:0.14.9
     restart: always
     env_file:
       - konga.env
     ports:
       - 1337:1337
+    depends_on:
+      - postgresql
 
+# PostgeSQL Datebase
+  postgresql:
+    image: postgres:11.2
+    restart: always
+    env_file:
+      - postgresql.env
+    volumes:
+      - kong-pgdata:/var/lib/postgresql/data
+
+volumes:
+  kong-pgdata:
+    driver: local
