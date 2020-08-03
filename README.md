@@ -7,24 +7,7 @@ Kong 云原生架构下的 API 网关
 
 ### 项目说明
 
-* **此项目仅适用于外置数据库,compose项目中不包含数据库**
-* **此项目使用了`kong:2.0.1`和`pantsel/konga:0.14.7`镜像**
-
-### 配置外置PostgreSQL数据库
-
-创建kong用户和kong数据库
-
-```
-create user kong with password 'yourpassword';
-create database kong owner kong;
-```
-
-创建konga用户和konga数据库
-
-```
-create user konga with password 'yourpassword';
-create database konga owner konga;
-```
+* **此项目使用了`kong:2.1.0-ubuntu`和`pantsel/konga:0.14.9`镜像**
 
 ### 克隆项目
 
@@ -34,19 +17,36 @@ git clone https://github.com/my6889/kong-api.git
 
 ### 启动项目
 
-1.修改kong.env和konga.env文件
+1.修改数据库密码
 
-2.初始化项目
+(默认密码是`1qaz2wsx`,也可以不改)
+
+```
+sed -i "s/1qaz2wsx/yourpassword/g" kong.env
+sed -i "s/1qaz2wsx/yourpassword/g" konga.env
+sed -i "s/1qaz2wsx/yourpassword/g" postgresql.env
+```
+
+2.在`postgresql.env`设置一些其它环境变量（选做）
+
+3.初始化项目
 
 ```
 chmod +x prepare.sh
 ./prepare.sh
 ```
 
-3.启动项目
+4.启动项目
 
 ```
 docker-compose up -d
+```
+
+5.完全移除项目
+
+```
+# 慎重操作
+docker-compose down -v
 ```
 
 
