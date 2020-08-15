@@ -10,13 +10,6 @@ services:
     ports:
       - 8000:8000 # 接收处理 http 流量
       - 8443:8443 # 接收处理 https 流量
-      - 8001:8001 # http 管理 API
-      - 8444:8444 # https 管理 API
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://kong:8001"]
-      interval: 5s
-      timeout: 2s
-      retries: 15
     depends_on:
       - postgresql
 
