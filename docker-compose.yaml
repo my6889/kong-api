@@ -33,8 +33,5 @@ services:
     env_file:
       - postgresql.env
     volumes:
-      - kong-pgdata:/var/lib/postgresql/data
+      - ./pgdata:/var/lib/postgresql/data
 
-volumes:
-  kong-pgdata:
-    driver: local
